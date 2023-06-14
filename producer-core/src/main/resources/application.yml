@@ -1,0 +1,10 @@
+# spring port
+server:
+  port: 8080
+# spring application name
+spring:
+  application:
+    name: producer-core
+  docker:
+    compose:
+      file: "docker-compose.yml"
