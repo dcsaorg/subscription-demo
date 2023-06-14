@@ -1,3 +1,3 @@
 # **Subscription Demo**
 
-This demo will showcase then **Notificaiton Pattern** & **Cloudevents**
+This demo will showcase the **Notificaiton Pattern** & **Cloudevents**
