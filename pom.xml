@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.dcsa</groupId>
+	<artifactId>subscription-demo</artifactId>
+	<version>1.0.0</version>
+	<name>subscription-demo</name>
+    <packaging>pom</packaging>
+	<description>Demo project for a typical EDA application</description>
+
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+
+    <modules>
+        <module>producer-core</module>
+		<module>producer-mediator</module>
+		<module>consumer-core</module>
+		<module>consumer-mediator</module>
+    </modules>
+
+</project>
