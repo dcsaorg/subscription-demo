@@ -1,2 +1,28 @@
 server:
   port: 8081
+
+  spring:
+    cloud:
+      function:
+        definition: source;sink
+      stream:
+        bindings:
+          sink-in-0:
+            destination: equipmentReference
+            group: producer-core
+            binder: local_rabbit
+          source-out-0:
+            destination: equipmentReference
+            binder: local_rabbit
+        poller:
+          fixed-delay: 5000
+        binders:
+          local_rabbit:
+            type: rabbit
+            environment:
+              spring:
+                rabbitmq:
+                  host: localhost
+                  port: 5672
+                  username: guest
+                  password: guest

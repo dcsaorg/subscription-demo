@@ -1,3 +1,44 @@
 # spring port
 server:
   port: 8082
+
+  # spring application name
+  spring:
+    application:
+      name: consumer-mediator
+    cloud:
+      function:
+        definition: source;consumer
+      #      routing:
+      #        enabled: true
+      #        routing-expression: "headers['type'] == 'org.dcsa.v1.event' ? 'consumer' : 'consumer1'"
+      stream:
+        bindings:
+          consumer-in-0:
+            destination: events
+            group: consumer-mediator
+            binder: local_kafka
+            consumer:
+              configuration:
+                key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                value.deserializer: io.cloudevents.kafka.CloudEventDeserializer
+          source-out-0:
+            destination: events
+            group: consumer-mediator
+            binder: local_kafka
+            producer:
+              configuration:
+                key.serializer: org.apache.kafka.common.serialization.StringSerializer
+                value.serializer: io.cloudevents.kafka.CloudEventSerializer
+        poller:
+          fixed-delay: 5000
+        binders:
+          local_kafka:
+            type: kafka
+            environment:
+              spring:
+                kafka:
+                  producer:
+                    bootstrap-servers: localhost:9092
+                  consumer:
+                    group-id: consumer-mediator
